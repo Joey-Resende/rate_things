@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "scoring_things"
+version = "0.1.0"
+description = "Um app para dar notas a coisas"
+authors = ["Joey-Resende <givanildo.resende@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
