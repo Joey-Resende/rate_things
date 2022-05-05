@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "scoring_things"
+name = "rate_things"
 version = "0.1.0"
 description = "Um app para dar notas a coisas"
 authors = ["Joey-Resende <givanildo.resende@gmail.com>"]
@@ -19,7 +19,7 @@ isort = "^5.10.1"
 prospector = "^1.7.7"
 
 [tool.poetry.scripts]
-scoring_things = "scoring_things.__main__:main"
+rate_things = "rate_things.__main__:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

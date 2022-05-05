@@ -1,4 +1,0 @@
-name = scoring_things"
-
-[database]
-url = "sqlite:///scoring_things.db"
