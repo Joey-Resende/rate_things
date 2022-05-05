@@ -14,7 +14,7 @@ class Things(SQLModel, table=True):
     image: int       # A nota para a apresentacao
     cost: int        # A nota para o custo/beneficio
     rate: int = 0
-    date: datetime = Field(dafault_factory=datetime.now)
+    date: datetime = Field(default_factory=datetime.now)
 
     @validator('score', 'image', 'cost')
     def validate_ratings(cls, v, field):

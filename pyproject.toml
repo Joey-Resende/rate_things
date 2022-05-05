@@ -3,6 +3,7 @@ name = "rate_things"
 version = "0.1.0"
 description = "Um app para dar notas a coisas"
 authors = ["Joey-Resende <givanildo.resende@gmail.com>"]
+include =["rate_things/settings.toml"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
