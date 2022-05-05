@@ -1,6 +1,5 @@
 from typing import Optional
 from sqlmodel import SQLModel, Field
-from sqlmodel import select
 from pydantic import validator
 from statistics import mean
 from datetime import datetime
@@ -18,12 +17,12 @@ class Things(SQLModel, table=True):
     date: datetime = Field(dafault_factory=datetime.now)
 
     @validator('score', 'image', 'cost')
-    def validate_ratings(cls, score, field):
-        if score < 1 or score > 10:
+    def validate_ratings(cls, v, field):
+        if v < 1 or v > 10:
             raise RuntimeError(f'{field.name} must be between 1 and 10')
-        return score
+        return v
 
     @validator('rate', always=True)
-    def calculate_rate(cls, score, values):
+    def calculate_rate(cls, v, values):
         rate = mean([values['score'], values['image'], values['cost']])
         return int(rate)
