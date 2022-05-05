@@ -21,6 +21,12 @@ def add_things_to_database(
             image=image,
             cost=cost,
         )
-        session.add(things)
+        sessions.add(things)
 
     return True
+
+
+def get_things_from_database() -> List[Things]:
+    with get_sessions() as sessions:
+        sql = select(Things)
+        return sessions.exec(sql)

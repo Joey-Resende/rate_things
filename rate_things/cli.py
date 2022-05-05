@@ -1,7 +1,12 @@
 import typer
-from rate_things.core import add_things_to_database
+from typing import Optional
+from rate_things.core import add_things_to_database, get_things_from_database
+from rich.table import Table
+from rich.console import Console
 
 main = typer.Typer(help='Rate_Things')
+
+console = Console()
 
 
 @main.command('add')
@@ -21,6 +26,16 @@ def add(
 
 
 @main.command('list')
-def list_things(name: str):
+def list_things(things: Optional[str] = None):
     """Lists things in databese."""
-    print(name)
+    things = get_things_from_database()
+    table = Table(title=':thunder: Rate_Things :thunder:')
+    headers = ['id', 'things', 'name', 'gender',
+               'score', 'image', 'cost', 'rate' 'date']
+    for header in headers:
+        table.add_column(header, style='blue')
+    for thing in things:
+        thing.date = Things.date.strftime("%Y-%m-%d")
+        values = [str(getattr(thing, header)) for header in headers]
+        table.add_row(*values)
+    console.print(table)
