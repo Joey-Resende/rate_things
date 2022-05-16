@@ -1,9 +1,11 @@
 from typing import List, Optional
+
 from fastapi import FastAPI, Response, status
+
 from rate_things.core import get_things_from_database
-from rate_things.serializers import ThingsIn, ThingsOut
 from rate_things.database import get_session
 from rate_things.models import Things
+from rate_things.serializers import ThingsIn, ThingsOut
 
 api = FastAPI(title='rate_things')
 
@@ -17,7 +19,7 @@ async def list_things(style: Optional[str] = None):
 
 @api.post('/things', response_model=ThingsOut)
 async def add_things(things_in: ThingsIn, response: Response):
-    things = Thing(**things_in.dict())
+    things = Things(**things_in.dict())
     with get_session() as session:
         session.add(things)
         session.commit()

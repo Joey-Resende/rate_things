@@ -19,6 +19,7 @@ uvicorn = "^0.17.6"
 [tool.poetry.dev-dependencies]
 isort = "^5.10.1"
 prospector = "^1.7.7"
+pytest = "^7.1.2"
 
 [tool.poetry.scripts]
 rate_things = "rate_things.__main__:main"

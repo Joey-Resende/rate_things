@@ -1,5 +1,7 @@
-from typing import Optional, List
+from typing import List, Optional
+
 from sqlmodel import select
+
 from rate_things.database import get_session
 from rate_things.models import Things
 
