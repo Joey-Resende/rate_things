@@ -13,20 +13,16 @@ def add_things_to_database(
     cost: int,
 ) -> bool:
     with get_session() as session:
-        things = Things(
-            things=things,
-            name=name,
-            gender=gender,
-            score=score,
-            image=image,
-            cost=cost,
-        )
-        session.add(things)
+        thing = Things(**locals())
+        session.add(thing)
+        session.commit()
 
     return True
 
 
-def get_things_from_database() -> List[Things]:
+def get_things_from_database(style: Optional[str] = None) -> List[Things]:
     with get_session() as session:
         sql = select(Things)
-        return session.exec(sql)
+        if style:
+            sql = sql.where(Things.style == style)
+        return list(session.exec(sql))

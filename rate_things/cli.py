@@ -1,6 +1,7 @@
 import typer
 from typing import Optional
 from rate_things.core import add_things_to_database, get_things_from_database
+from rich import print
 from rich.table import Table
 from rich.console import Console
 
@@ -26,10 +27,11 @@ def add(
 
 
 @main.command('list')
-def list_things(things: Optional[str] = None):
-    """Lists things in databese."""
-    things = get_things_from_database()
-    table = Table(title=':thunder: Rate_Things :thunder:')
+def list_things(style: Optional[str] = None):
+    """Lists things from the database."""
+    things = get_things_from_database(style)
+    table = Table(
+        title=':thunder: Rate_Things :thunder:' if not style else f'Rate_Things {style}')
     headers = ['id', 'things', 'name', 'gender',
                'score', 'image', 'cost', 'rate' 'date']
     for header in headers:
