@@ -1,4 +1,4 @@
-from rate_things.core import get_things_from_database, add_things_to_database
+from rate_things.core import add_things_to_database, get_things_from_database
 
 
 def test_add_things_to_database():

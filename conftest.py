@@ -1,6 +1,8 @@
-import pytest
 from unittest.mock import patch
+
+import pytest
 from sqlmodel import create_engine
+
 from rate_things import models
 
 

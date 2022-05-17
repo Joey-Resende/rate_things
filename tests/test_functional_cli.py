@@ -1,4 +1,5 @@
 from typer.testing import CliRunner
+
 from rate_things.cli import main
 
 runner = CliRunner()
