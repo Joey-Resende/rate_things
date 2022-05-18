@@ -3,7 +3,8 @@ from fastapi.testclient import TestClient
 from rate_things.api import api
 
 client = TestClient(api)
-
+ 
+ 
 def test_create_things_via_api():
     response = client.post(
         '/things', 
@@ -20,4 +21,3 @@ def test_create_things_via_api():
     result = response.json()
     assert result["things"] == "Serie"
     assert result["id"] == 1
-    
